@@ -2,6 +2,20 @@
 pragma solidity ^0.8.0;
 pragma abicoder v2;
 
+/**
+ * @title Governance V2 contract
+ * @dev Main point of interaction with Aave protocol's governance
+ * - Create a Proposal
+ * - Cancel a Proposal
+ * - Queue a Proposal
+ * - Execute a Proposal
+ * - Submit Vote to a Proposal
+ * Proposal States : Pending => Active => Succeeded(/Failed) => Queued => Executed(/Expired)
+ *                   The transition to "Canceled" can appear in multiple states
+ * @author Aave
+ **/
+
+
 interface IScientiaGovernance {
     enum ProposalState {
         Pending,
@@ -46,4 +60,6 @@ interface IScientiaGovernance {
         address strategy;
         bytes32 ipfsHash;
     }
+
+    
 }
