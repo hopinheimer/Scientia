@@ -56,7 +56,7 @@ export const siteConfig = {
 		},
 	],
 	links: {
-		github: "https://github.com/nextui-org/nextui",
-		twitter: "https://twitter.com/getnextui",
+		github: "https://github.com/ManasNagaraj/Scientia",
+		twitter: "https://twitter.com/0xmartisan",
 	},
 };

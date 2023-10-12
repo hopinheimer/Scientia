@@ -4,7 +4,7 @@ pragma abicoder v2;
 
 /**
  * @title Governance V2 contract
- * @dev Main point of interaction with Aave protocol's governance
+ * @dev Main point of interaction with Scientia protocol's governance
  * - Create a Proposal
  * - Cancel a Proposal
  * - Queue a Proposal
@@ -12,7 +12,7 @@ pragma abicoder v2;
  * - Submit Vote to a Proposal
  * Proposal States : Pending => Active => Succeeded(/Failed) => Queued => Executed(/Expired)
  *                   The transition to "Canceled" can appear in multiple states
- * @author Aave
+ * @author Scientia x Aave
  **/
 
 
@@ -61,5 +61,43 @@ interface IScientiaGovernance {
         bytes32 ipfsHash;
     }
 
-    
+    /**
+    * @dev create proposal where proposing power > threshold
+    * @param ipfsHash IPFS hash on the proposal
+    */
+    function create(bytes32 ipfsHash) external returns (uint256);
+
+    /**
+    * @dev cancelling proposal optional function
+    * @param proposalId proposalId generated at the creation of every proposal
+    */
+    function cancel(uint256 proposalId) external;
+
+    /**
+    * @dev Execute the proposal (If Queued)
+    * @param proposalId proposalId generated at the creation of every proposal
+    */
+    function excute(uint256 proposalId) external payable;
+
+    /**
+    * @dev Queue proposal for Execution if the parameters for Quorum is met
+    * @param proposalId proposalId generated at the creation of every proposal
+    */
+    function queue(uint256 proposalId) external;
+
+    /**
+    * @dev Vote function for the msg.sender for/against to Proposal
+    * @param proposalId proposalId generated at the creation of every proposal
+    * @param support boolean, true = vote for, false = vote against
+    */
+    function submitVote(uint256 proposalId,bool support) external;
+
+    function getProposalsCount() external view returns (uint256);
+
+    function getProposalById(uint256 proposalId) external view returns (ProposalWithoutVotes memory);
+
+    function getVoteOnProposal(uint256 proposalId, address voter) external view returns (Vote memory);
+
+    function getProposalState(uint256 proposalId) external view returns (ProposalState);
+
 }

@@ -23,7 +23,7 @@ Just like any other peer review institutions Scientia will distribute preferenti
 
 ### Create Proposal
 
-To Create a proposal one must have enough proposing power or delegated proposing power to propose a research paper.
+To Create a proposal one must have enough proposing power or delegated proposing power to propose a research paper. The proposer makes a small contribution the treasury despite it 
 
 ### Vote 
 
@@ -36,6 +36,8 @@ The publication success algorithm is borrowed from aave governance v2
 1. The voting power (in % of total voting power) of for-votes needs to reach the quorum set by the ``MINIMUM_QUORUM`` parameter, and
 
 2. The difference between for-votes and against-votes (in % of total voting power) needs to exceed the vote differential threshold set by the ``VOTE_DIFFERENTIAL`` parameter.
+
+Now, comes the fun part. A protocol's quality can characterized by the balance maintained between incentives for its actors and the negative reinforcement for a bad one. Pertainent to that once the proposal is passed and published, the accounts which coequally voted as the outcome of the proposal are rewards with freshly minted governance tokens, in contrast, the accounts which voted support opposite to the outcome of the proposal, the fine is collected which is then contributed to the treasury. The mechanism as it stands is in a very rudimentary state, further enhancement to the mechanism is expected. 
 
 
 
